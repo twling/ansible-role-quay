@@ -43,10 +43,11 @@ install:
 
   # Create ansible.cfg with correct roles_path
   - printf '[defaults]\nroles_path=../' >ansible.cfg
-
+ 
+  - sudo chmod 777 -R /home/travis/.vagrant.d
 script:
   # Run molecule
-  - sudo molecule test 
+  - molecule test 
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
