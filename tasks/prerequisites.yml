@@ -6,4 +6,3 @@
       - "firewalld"
       - "docker"
     state: latest
-
