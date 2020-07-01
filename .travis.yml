@@ -36,7 +36,7 @@ install:
   - sudo vagrant plugin install vagrant-libvirt
 
   # Install ansible, molecule
-  - pip install ansible molecule molecule-vagrant yamllint ansible-lint
+  - pip install ansible molecule molecule-vagrant yamllint ansible-lint pytest-flake8
 
   # Check ansible version
   - ansible --version
