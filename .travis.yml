@@ -3,6 +3,11 @@ dist: bionic
 language: python
 
 
+# Cache the big Vagrant boxes
+cache:
+  directories:
+  - /home/travis/.vagrant.d/boxes
+
 # Install ansible
 # Install libvrt & KVM (see https://github.com/alvistack/ansible-role-virtualbox/blob/master/.travis.yml)
 addons:
@@ -31,7 +36,7 @@ install:
   - sudo vagrant plugin install vagrant-libvirt
 
   # Install ansible, molecule
-  - pip install ansible molecule yamllint ansible-lint
+  - pip install ansible molecule molecule-vagrant yamllint ansible-lint
 
   # Check ansible version
   - ansible --version
