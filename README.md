@@ -5,8 +5,8 @@ This role will deploy Quay (https://www.projectquay.io).
 
 Supported deployments are:
 
-Basic Deploy (Single Machine)
-High Availability (Cluster - 3 Quay + 1 DB node)
+* Basic Deploy (Single Machine)
+* High Availability (Cluster - 3 Quay + 1 DB node)
 
 
 Requirements
