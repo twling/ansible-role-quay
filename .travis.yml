@@ -46,7 +46,7 @@ install:
 
 script:
   # Run molecule
-  - molecule test 
+  - sudo molecule test 
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
