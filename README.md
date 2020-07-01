@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/twling/ansible-role-quay.svg?branch=master)](https://travis-ci.org/twling/ansible-role-quay)
+
 Role Name
 =========
 
