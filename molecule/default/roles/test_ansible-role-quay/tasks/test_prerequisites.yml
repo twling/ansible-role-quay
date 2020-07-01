@@ -1,0 +1,14 @@
+---
+- name: "Check package status"
+  package:
+    name: 
+      - "firewalld"
+      - "docker"  
+    state: "installed"
+  check_mode: yes
+  register: pkg_status
+
+- name: "Test for installed packages"
+  assert:
+    that:
+      - not pkg_status.changed

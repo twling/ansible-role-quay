@@ -1,0 +1,4 @@
+---
+
+- name: "Test configuration of prerequisites"
+  include_tasks: "test_prerequisites.yml"

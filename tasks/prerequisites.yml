@@ -1,0 +1,9 @@
+---
+
+- name: Prerequisites | Install packages 
+  package:
+    name: 
+      - "firewalld"
+      - "docker"
+    state: latest
+

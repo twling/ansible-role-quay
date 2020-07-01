@@ -1,0 +1,20 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: libvirt
+lint: |
+  set -e
+  yamllint .
+  flake8
+platforms:
+  - name: instance
+    box: centos/7
+    memory: 512
+    cpus: 1
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

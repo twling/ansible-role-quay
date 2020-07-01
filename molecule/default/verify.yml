@@ -1,0 +1,9 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  tasks:
+    - name: "Include test_ansible-role-quay"
+      include_role:
+        name: "test_ansible-role-quay"
