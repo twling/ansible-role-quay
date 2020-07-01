@@ -36,7 +36,7 @@ install:
   - sudo vagrant plugin install vagrant-libvirt
 
   # Install ansible, molecule
-  - pip install ansible molecule molecule-vagrant yamllint ansible-lint pytest-flake8
+  - sudo pip install ansible molecule molecule-vagrant yamllint ansible-lint pytest-flake8
 
   # Check ansible version
   - ansible --version
@@ -46,7 +46,7 @@ install:
  
 script:
   # Run molecule
-  - sudo -E molecule test 
+  - sudo molecule test 
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
