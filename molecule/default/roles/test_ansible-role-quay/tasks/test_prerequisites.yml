@@ -12,3 +12,29 @@
   assert:
     that:
       - not pkg_status.changed
+
+- name: "Check docker service status"
+  service:
+    name: "docker"
+    enabled: yes
+    state: started
+  check_mode: yes
+  register: service_status
+
+- name: "Test service status"
+  assert:
+    that:
+      - not service_status.changed
+
+- name: "Check firewalld service status"
+  service:
+    name: "firewalld"
+    enabled: yes
+    state: started
+  check_mode: yes
+  register: service_status
+
+- name: "Test service status"
+  assert:
+    that:
+      - not service_status.changed

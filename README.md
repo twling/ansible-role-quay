@@ -38,6 +38,27 @@ Dependencies
 
 N/A
 
+Testing
+------------
+
+This role is developed using the Molecule testing framwork, using the vagrant+lib plugin. Using Docker for testing is avoided
+here as the Quay service runs on as a container and Docker-in-Docker can be problemeatic.
+
+Testing Setup:
+
+*Fedora 32*
+
+```
+sudo dnf install -y libvirt vagrant vagrant-libvirt vagrant-sshfs python3-pip python3-devel python3-libselinux
+python3 -m pip install --user molecule[lint] molecule-vagrant pytest-flake8
+```
+
+Executing Tests:
+
+```
+molecule test
+```
+
 Example Playbook
 ----------------
 

@@ -6,3 +6,12 @@
       - "firewalld"
       - "docker"
     state: latest
+
+- name: Prerequisites | Enabled required services
+  service:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  with_items:
+    - "docker"
+    - "firewalld"
