@@ -15,3 +15,25 @@
   with_items:
     - "docker"
     - "firewalld"
+
+- name: Prerequisites | Log into quay.io using set credentials
+  command: 
+    cmd: "docker login -u='redhat+quay' -p='O81WSHRSJR14UAZBK54GQHJS0P1V4CLWAJV1X2C4SD7KO59CQ9N3RE12612XU1HR' quay.io"
+    creates: "/root/.docker/config.json"
+
+- name: Prerequisites | Open firewalld ports
+  firewalld:
+    service: "{{ item }}"
+    state: enabled
+    permanent: yes
+    immediate: yes
+  with_items:
+    - "https"
+    - "http"
+
+- name: Prerequisites | Open firewalld ports
+  firewalld:
+    port: "8443/tcp"
+    state: enabled
+    permanent: yes
+    immediate: yes

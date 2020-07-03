@@ -38,3 +38,67 @@
   assert:
     that:
       - not service_status.changed
+
+- name: "Test that docker configuration exists"
+  stat:
+    path: "/root/.docker/config.json"
+  register: docker_file_status
+
+- name: "Test docker login command"
+  assert:
+    that:
+      - docker_file_status.stat.exists
+
+- name: "Test docker login for Quay image access"
+  lineinfile:
+    path: "/root/.docker/config.json"
+    line: '			"auth": "cmVkaGF0K3F1YXk6TzgxV1NIUlNKUjE0VUFaQks1NEdRSEpTMFAxVjRDTFdBSlYxWDJDNFNEN0tPNTlDUTlOM1JFMTI2MTJYVTFIUg=="'
+  check_mode: yes
+  register: docker_status
+
+- name: "Test docker login command"
+  assert:
+    that:
+      - not docker_status.changed
+
+- name: "Test open ports - https - in firewalld"
+  firewalld:
+    service: https
+    permanent: yes
+    state: enabled
+    immediate: yes
+  check_mode: yes
+  register: firewalld_status
+
+- name: "Check for https ports open in firewalld"
+  assert:
+    that:
+      - not firewalld_status.changed
+
+- name: "Test open ports - http - in firewalld"
+  firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+    immediate: yes
+  check_mode: yes
+  register: firewalld_status
+
+- name: "Check for http ports open in firewalld"
+  assert:
+    that:
+      - not firewalld_status.changed
+
+- name: "Test open ports - 8443 - in firewalld"
+  firewalld:
+    port: "8443/tcp"
+    permanent: yes
+    state: enabled
+    immediate: yes
+  check_mode: yes
+  register: firewalld_status
+
+- name: "Check for 8443 port open in firewalld"
+  assert:
+    that:
+      - not firewalld_status.changed

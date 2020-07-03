@@ -3,6 +3,7 @@
 
 - name: Verify
   hosts: all
+  become: yes
   tasks:
     - name: "Include test_ansible-role-quay"
       include_role:
