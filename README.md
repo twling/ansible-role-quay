@@ -38,6 +38,38 @@ Dependencies
 
 N/A
 
+Testing
+-------
+
+Setting up the testing environment:
+
+Install Vagrant:
+
+```
+sudo dnf install vagrant
+```
+
+Setup python virtualenv for molecule:
+
+```
+$ python3 -m venv molecule-venv
+$ source molecule-venv/bin/activate
+(molecule-venv) $ pip install --user "molecule[lint]" molecule-vagrant python-vagrant
+```
+
+
+Molecule Testing:
+
+```
+#linting
+molecule lint
+
+#full test
+molecule test
+
+
+```
+
 Example Playbook
 ----------------
 
